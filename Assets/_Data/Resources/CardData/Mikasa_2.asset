@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Mikasa's Anger
   cardType: 2
-  cardDescription: Double Mikasa's Attack (this spell do not stack)
+  cardDescription: Double Mikasa's Attack, can active 1 card only.
   image: {fileID: 2100000, guid: 20da93f910f9d4c4daecc5b73ca87cdb, type: 2}
-  damage: 1
-  defend: 1
+  attack: 0
+  defend: 0
   maxInDesk: 3

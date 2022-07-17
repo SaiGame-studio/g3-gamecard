@@ -16,6 +16,6 @@ MonoBehaviour:
   cardType: 2
   cardDescription: Mikasa go back to battle field immediately
   image: {fileID: 2100000, guid: f8de961d2867131458e2fc6839fea84d, type: 2}
-  damage: 1
-  defend: 1
+  attack: 0
+  defend: 0
   maxInDesk: 3

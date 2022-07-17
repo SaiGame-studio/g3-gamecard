@@ -192,6 +192,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ba21cd69045f7b449a5ee794c2da953, type: 2}
   - {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
   - {fileID: 11400000, guid: 4fed9173d5ccf524fa9adb29982774dd, type: 2}
+  - {fileID: 11400000, guid: 057cae86d2b928f4698e013c2ba0b8d7, type: 2}
 --- !u!1 &808730568
 GameObject:
   m_ObjectHideFlags: 0
@@ -30535,5 +30536,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6537842649350643241, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37250d4f717beaa4ea28ffda1f414ed3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
