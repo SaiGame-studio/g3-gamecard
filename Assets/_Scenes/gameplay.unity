@@ -123,6 +123,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!23 &556597464 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6537842649350643241, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
+  m_PrefabInstance: {fileID: 6537842649768879962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &572577851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1217002378, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
+  m_PrefabInstance: {fileID: 6537842649768879962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c798f87f027284ca0a47e140800264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &679480262
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +190,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bccc31fb5fda858489e09b96ae2b9940, type: 2}
   - {fileID: 11400000, guid: 7d723f1d9a01249419d0a83b0933a020, type: 2}
   - {fileID: 11400000, guid: 9ba21cd69045f7b449a5ee794c2da953, type: 2}
+  - {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
+  - {fileID: 11400000, guid: 4fed9173d5ccf524fa9adb29982774dd, type: 2}
 --- !u!1 &808730568
 GameObject:
   m_ObjectHideFlags: 0
@@ -30457,6 +30475,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 679480263}
     m_Modifications:
+    - target: {fileID: 481045001, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 511398331377522505, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 572577851}
+    - target: {fileID: 511398331377522505, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
+      propertyPath: cardImage
+      value: 
+      objectReference: {fileID: 556597464}
     - target: {fileID: 6537842649227945876, guid: edac1faf7abaf424e9d368e82a682571, type: 3}
       propertyPath: m_RootOrder
       value: 0

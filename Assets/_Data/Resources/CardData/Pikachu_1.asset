@@ -18,6 +18,6 @@ MonoBehaviour:
     proficiency in extremely fast Iaijutsu-like swordsmanship and the Thunderclap
     and Flash technique.
   image: {fileID: 2100000, guid: 492bd2cce081d714297ccd78e5f07348, type: 2}
-  attack: 7
-  defend: 4
+  attack: 4
+  defend: 3
   maxInDesk: 3
