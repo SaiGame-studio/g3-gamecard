@@ -53,14 +53,20 @@ public class CardSpawner : SaiMonoBehaviour
 
     protected virtual void TestLoadCards()
     {
+        int index = 0;
         foreach(CardSO cardSO in this.cardDatas)
         {
             GameObject newCard = Instantiate(this.cardPrefab);
             CardCtrl cardCtrl = newCard.GetComponent<CardCtrl>();
             cardCtrl.cardData.SetSO(cardSO);
-
+            
             newCard.name = cardSO.name;
             newCard.SetActive(true);
+
+            index++;
+            Vector3 pos = this.cardPrefab.transform.position;
+            pos.x = (12 * -index)+25;
+            newCard.transform.position = pos;
         }
     }
 
