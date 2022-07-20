@@ -6,6 +6,7 @@ public class CardSpawner : SaiMonoBehaviour
     private static CardSpawner instance;
     public static CardSpawner Instance { get => instance; }
 
+    [SerializeField] protected Transform cardHolder;
     [SerializeField] protected GameObject cardPrefab;
     [SerializeField] protected List<CardSO> cardDatas;
 
@@ -27,6 +28,7 @@ public class CardSpawner : SaiMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
+        this.LoadCardHolder();
         this.LoadCardPrefab();
         this.LoadCardDatas();
     }
@@ -36,6 +38,13 @@ public class CardSpawner : SaiMonoBehaviour
         if (this.cardPrefab != null) return;
         this.cardPrefab = transform.Find("CardPrefab").gameObject;
         Debug.Log(transform.name + ": LoadCardPrefab", gameObject);
+    }
+
+    protected virtual void LoadCardHolder()
+    {
+        if (this.cardHolder != null) return;
+        this.cardHolder = GameObject.Find("CardHolder").transform;
+        Debug.Log(transform.name + ": LoadCardHolder", gameObject);
     }
 
     protected virtual void LoadCardDatas()
@@ -51,27 +60,49 @@ public class CardSpawner : SaiMonoBehaviour
         Debug.Log(transform.name + ": LoadCardDatas", gameObject);
     }
 
+    /// <summary>
+    /// For testing only, will be removed 
+    /// </summary>
     protected virtual void TestLoadCards()
     {
         int index = 0;
         foreach(CardSO cardSO in this.cardDatas)
         {
-            GameObject newCard = Instantiate(this.cardPrefab);
-            CardCtrl cardCtrl = newCard.GetComponent<CardCtrl>();
-            cardCtrl.cardData.SetSO(cardSO);
-            
-            newCard.name = cardSO.name;
-            newCard.SetActive(true);
-
             index++;
             Vector3 pos = this.cardPrefab.transform.position;
             pos.x = (12 * -index)+25;
-            newCard.transform.position = pos;
+
+            CardCtrl cardCtrl = this.SpawnBySO(cardSO, pos);
+            cardCtrl.gameObject.SetActive(true);
         }
     }
 
     protected virtual void HidePrefabs()
     {
         this.cardPrefab.gameObject.SetActive(false);
+    }
+
+    public virtual CardSO GetSOByID(CardID cardID)
+    {
+        foreach(CardSO cardSO in this.cardDatas)
+        {
+            if (cardSO.cardID == cardID) return cardSO;
+        }
+
+        Debug.LogWarning("CardID exist without CardSO: This should not happen");
+        return null;
+    }
+
+    public virtual CardCtrl SpawnBySO(CardSO cardSO, Vector3 spawnPos)
+    {
+        GameObject newCard = Instantiate(this.cardPrefab);
+        newCard.name = cardSO.name;
+        newCard.transform.position = spawnPos;
+        newCard.transform.parent = this.cardHolder;
+
+        CardCtrl cardCtrl = newCard.GetComponent<CardCtrl>();
+        cardCtrl.cardData.SetSO(cardSO);
+
+        return cardCtrl;
     }
 }

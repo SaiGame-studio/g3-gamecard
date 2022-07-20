@@ -359,8 +359,8 @@ MonoBehaviour:
   cardSO: {fileID: 0}
   cardName: {fileID: 1379907617}
   cardDescription: {fileID: 1060182796}
-  cardAttack: {fileID: 0}
-  cardDefend: {fileID: 0}
+  cardAttack: {fileID: 689691876024957243}
+  cardDefend: {fileID: 6061208839810266774}
 --- !u!1 &1379907615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1094,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f8a748d7a5fea77498aa0201a31be43c, type: 2}
+  - {fileID: 2100000, guid: 37250d4f717beaa4ea28ffda1f414ed3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

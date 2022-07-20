@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124330176f6d1a547aad2a17191d9bc5, type: 3}
   m_Name: Katana_1
   m_EditorClassIdentifier: 
+  cardID: 1000
   cardName: Katana
   cardType: 2
   cardDescription: Add 1 attack to Normal Card. This card will transform Pikachu

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124330176f6d1a547aad2a17191d9bc5, type: 3}
   m_Name: Mikasa_2
   m_EditorClassIdentifier: 
+  cardID: 2
   cardName: Mikasa's Anger
   cardType: 2
   cardDescription: Double Mikasa's Attack, can active 1 card only.
