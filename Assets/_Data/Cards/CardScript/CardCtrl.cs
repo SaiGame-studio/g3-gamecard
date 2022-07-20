@@ -4,12 +4,14 @@ public class CardCtrl : SaiMonoBehaviour
 {
     public MeshRenderer cardImage;
     public CardData cardData;
+    public CardMovement cardMovement;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCardImage();
         this.LoadCardData();
+        this.LoadCardMovement();
     }
 
     protected virtual void LoadCardImage()
@@ -24,5 +26,12 @@ public class CardCtrl : SaiMonoBehaviour
         if (this.cardData != null) return;
         this.cardData = transform.Find("CardData").GetComponent<CardData>();
         Debug.Log(transform.name + ": LoadCardData", gameObject);
+    }
+
+    protected virtual void LoadCardMovement()
+    {
+        if (this.cardMovement != null) return;
+        this.cardMovement = transform.Find("CardMovement").GetComponent<CardMovement>();
+        Debug.Log(transform.name + ": LoadCardMovement", gameObject);
     }
 }

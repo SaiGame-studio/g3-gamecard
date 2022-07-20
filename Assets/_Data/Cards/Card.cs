@@ -4,7 +4,8 @@ using UnityEngine;
 [Serializable]
 public class Card
 {
+    public string name;
     public CardID cardID;
     public CardSO cardSO;
-    public int cardCount = 0;
+    public int useCount = 0;
 }

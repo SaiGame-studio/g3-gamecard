@@ -22,7 +22,7 @@ public class CardSpawner : SaiMonoBehaviour
     protected override void Start()
     {
         base.Start();
-        this.TestLoadCards();
+        //this.TestLoadCards();
     }
 
     protected override void LoadComponents()
