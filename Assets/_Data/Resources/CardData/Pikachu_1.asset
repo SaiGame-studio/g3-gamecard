@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124330176f6d1a547aad2a17191d9bc5, type: 3}
   m_Name: Pikachu_1
   m_EditorClassIdentifier: 
+  cardID: 11
   cardName: Zenitchu
   cardType: 3
   cardDescription: Zenitchu is an incredibly talented swordsman, especially in his
     proficiency in extremely fast Iaijutsu-like swordsmanship and the Thunderclap
     and Flash technique.
   image: {fileID: 2100000, guid: 492bd2cce081d714297ccd78e5f07348, type: 2}
-  attack: 7
-  defend: 4
+  attack: 4
+  defend: 3
   maxInDesk: 3

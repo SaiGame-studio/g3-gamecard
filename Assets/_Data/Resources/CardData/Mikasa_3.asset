@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124330176f6d1a547aad2a17191d9bc5, type: 3}
   m_Name: Mikasa_3
   m_EditorClassIdentifier: 
+  cardID: 3
   cardName: Mikasa's Dual Swords
   cardType: 2
-  cardDescription: Allow Mikasa attack 2 targets in 1 turn
+  cardDescription: Allow Mikasa attack 2 enemies at same time.
   image: {fileID: 2100000, guid: cd8bd129869a7b34e85541da977f9bba, type: 2}
-  damage: 1
-  defend: 1
+  attack: 0
+  defend: 0
   maxInDesk: 3

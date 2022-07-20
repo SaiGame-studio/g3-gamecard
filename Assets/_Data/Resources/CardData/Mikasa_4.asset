@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124330176f6d1a547aad2a17191d9bc5, type: 3}
   m_Name: Mikasa_4
   m_EditorClassIdentifier: 
+  cardID: 4
   cardName: Mikasa Reborn
   cardType: 2
   cardDescription: Mikasa go back to battle field immediately
   image: {fileID: 2100000, guid: f8de961d2867131458e2fc6839fea84d, type: 2}
-  damage: 1
-  defend: 1
+  attack: 0
+  defend: 0
   maxInDesk: 3
