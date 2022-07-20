@@ -5,16 +5,31 @@ using UnityEngine;
 public class DeskManager : SaiMonoBehaviour
 {
     [Header("Desk Manager")]
-    [SerializeField] protected int mainDeskCount = 0;
+    [SerializeField] protected CardSpawner cardSpawner;
     [SerializeField] protected List<Card> mainDesk;
-
-    [SerializeField] protected int summonDeskCount = 0;
     [SerializeField] protected List<Card> summonDesk;
+    [SerializeField] protected List<Card> notUseDesk;
 
-    protected override void Start()
+    public List<Card> MainDesk { get => mainDesk; }
+    public List<Card> SummonDesk { get => summonDesk; }
+
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         this.CreateTestMainDesk();//TODO: for testing only
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadCardSpawner();
+    }
+
+    protected virtual void LoadCardSpawner()
+    {
+        if (this.cardSpawner != null) return;
+        this.cardSpawner = GameObject.Find("CardSpawner").GetComponent<CardSpawner>();
+        Debug.Log(transform.name + ": LoadCardSpawner", gameObject);
     }
 
     /// <summary>
@@ -24,79 +39,62 @@ public class DeskManager : SaiMonoBehaviour
     {
         foreach (CardID cardID in Enum.GetValues(typeof(CardID)))
         {
-            CardSO cardSO = CardSpawner.Instance.GetSOByID(cardID);
+            CardSO cardSO = this.cardSpawner.GetSOByID(cardID);
             this.Add(cardID, cardSO.maxInDesk);
         }
+
+        this.Add(CardID.Mikasa_2, 1);
+        this.Add(CardID.Pikachu_0, 1);
     }
 
     public virtual bool Add(CardID cardID, int addCount = 1)
     {
-        CardSO cardSO = CardSpawner.Instance.GetSOByID(cardID);
+        CardSO cardSO = this.cardSpawner.GetSOByID(cardID);
         if (cardSO == null) return false;
 
-        if (cardSO.cardType == CardType.summon) return this.SummonDeskAdd(cardSO, addCount);
-        return this.MainDeskAdd(cardSO, addCount);
+        if (cardSO.cardType == CardType.summon) return this.CardDeskAdd(cardSO, this.SummonDesk, addCount);
+        return this.CardDeskAdd(cardSO, this.MainDesk, addCount);
     }
 
-    protected virtual bool SummonDeskAdd(CardSO cardSO, int addCount = 1)
+    protected virtual bool CardDeskAdd(CardSO cardSO, List<Card> cardDesk, int addCount = 1)
     {
-        CardID cardID = cardSO.cardID;
+        int cardCount = this.CardDeskCount(cardSO.cardID, cardDesk);
+        int newCardCount = cardCount + addCount;
 
-        Card card = this.SummonDeskGet(cardID);
-        if (card == null)
+        if (newCardCount > cardSO.maxInDesk)
         {
-            card = new Card
-            {
-                cardID = cardID,
-                cardSO = cardSO
-            };
-
-            this.summonDesk.Add(card);
-        }
-
-        int newCount = card.cardCount + addCount;
-        if (newCount > cardSO.maxInDesk)
-        {
-            Debug.LogWarning(cardSO.cardName + ": Card Count already max");
+            this.CardDeskAdd(cardSO, this.notUseDesk, addCount);
             return false;
         }
 
-        card.cardCount = newCount;
-        this.summonDeskCount += addCount;
+        Card card = card = new Card
+        {
+            name = cardSO.cardName,
+            cardID = cardSO.cardID,
+            cardSO = cardSO
+        };
+
+        for (int i = 0; i < addCount; i++)
+        {
+            cardDesk.Add(card);
+        }
+
         return true;
     }
 
-    protected virtual bool MainDeskAdd(CardSO cardSO, int addCount = 1)
+    protected virtual int CardDeskCount(CardID cardID, List<Card> cardDesk)
     {
-        CardID cardID = cardSO.cardID;
-
-        Card card = this.MainDeskGet(cardID);
-        if (card == null)
+        int count = 0;
+        foreach (Card card in cardDesk)
         {
-            card = new Card
-            {
-                cardID = cardID,
-                cardSO = cardSO
-            };
-
-            this.mainDesk.Add(card);
+            if (card.cardID == cardID) count++;
         }
-
-        int newCount = card.cardCount + addCount;
-        if (newCount > cardSO.maxInDesk)
-        {
-            Debug.LogWarning(cardSO.cardName + ": Card Count already max");
-            return false;
-        }
-
-        card.cardCount = newCount;
-        this.mainDeskCount += addCount;
-        return true;
+        return count;
     }
 
     public virtual Card MainDeskGet(CardID cardID)
     {
-        foreach (Card card in this.mainDesk)
+        foreach (Card card in this.MainDesk)
         {
             if (card.cardID == cardID) return card;
         }
@@ -106,7 +104,7 @@ public class DeskManager : SaiMonoBehaviour
 
     public virtual Card SummonDeskGet(CardID cardID)
     {
-        foreach (Card card in this.summonDesk)
+        foreach (Card card in this.SummonDesk)
         {
             if (card.cardID == cardID) return card;
         }
