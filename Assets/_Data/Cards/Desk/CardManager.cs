@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeskManager : SaiMonoBehaviour
+public class CardManager : SaiMonoBehaviour
 {
     [Header("Desk Manager")]
     [SerializeField] protected CardSpawner cardSpawner;
-    [SerializeField] protected List<Card> mainDesk;
-    [SerializeField] protected List<Card> summonDesk;
-    [SerializeField] protected List<Card> notUseDesk;
+    [SerializeField] protected List<Card> mainCards;
+    [SerializeField] protected List<Card> summonCards;
+    [SerializeField] protected List<Card> notUseCards;
 
-    public List<Card> MainDesk { get => mainDesk; }
-    public List<Card> SummonDesk { get => summonDesk; }
+    public List<Card> MainCards { get => mainCards; }
+    public List<Card> SummonCards { get => summonCards; }
 
     protected override void Awake()
     {
@@ -52,8 +52,8 @@ public class DeskManager : SaiMonoBehaviour
         CardSO cardSO = this.cardSpawner.GetSOByID(cardID);
         if (cardSO == null) return false;
 
-        if (cardSO.cardType == CardType.summon) return this.CardDeskAdd(cardSO, this.SummonDesk, addCount);
-        return this.CardDeskAdd(cardSO, this.MainDesk, addCount);
+        if (cardSO.cardType == CardType.summon) return this.CardDeskAdd(cardSO, this.SummonCards, addCount);
+        return this.CardDeskAdd(cardSO, this.MainCards, addCount);
     }
 
     protected virtual bool CardDeskAdd(CardSO cardSO, List<Card> cardDesk, int addCount = 1)
@@ -63,7 +63,7 @@ public class DeskManager : SaiMonoBehaviour
 
         if (newCardCount > cardSO.maxInDesk)
         {
-            this.CardDeskAdd(cardSO, this.notUseDesk, addCount);
+            this.CardDeskAdd(cardSO, this.notUseCards, addCount);
             return false;
         }
 
@@ -94,7 +94,7 @@ public class DeskManager : SaiMonoBehaviour
 
     public virtual Card MainDeskGet(CardID cardID)
     {
-        foreach (Card card in this.MainDesk)
+        foreach (Card card in this.MainCards)
         {
             if (card.cardID == cardID) return card;
         }
@@ -104,7 +104,7 @@ public class DeskManager : SaiMonoBehaviour
 
     public virtual Card SummonDeskGet(CardID cardID)
     {
-        foreach (Card card in this.SummonDesk)
+        foreach (Card card in this.SummonCards)
         {
             if (card.cardID == cardID) return card;
         }
