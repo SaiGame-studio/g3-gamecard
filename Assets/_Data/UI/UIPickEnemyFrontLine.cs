@@ -5,6 +5,6 @@ public class UIPickEnemyFrontLine : SaiMonoBehaviour
 {
     public virtual void OnClick()
     {
-        MatchManager.Instance.SendCard2Line(LineType.enemyFrontLine);
+        ManagerEnemyDesk.Instance.SendCard2Line(LineType.frontLine);
     }
 }

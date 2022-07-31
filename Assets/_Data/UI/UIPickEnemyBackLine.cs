@@ -5,6 +5,6 @@ public class UIPickEnemyBackLine : SaiMonoBehaviour
 {
     public virtual void OnClick()
     {
-        MatchManager.Instance.SendCard2Line(LineType.enemyBackLine);
+        ManagerEnemyDesk.Instance.SendCard2Line(LineType.backLine);
     }
 }

@@ -5,6 +5,6 @@ public class UIPickMyFrontLine : SaiMonoBehaviour
 {
     public virtual void OnClick()
     {
-        MatchManager.Instance.SendCard2Line(LineType.myFrontLine);
+        ManagerMyDesk.Instance.SendCard2Line(LineType.frontLine);
     }
 }
