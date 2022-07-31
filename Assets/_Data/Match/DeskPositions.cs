@@ -3,15 +3,26 @@ using UnityEngine;
 
 public class DeskPositions : SaiMonoBehaviour
 {
-    public Transform myDeskPos;
-    public Transform mySummonPos;
-    public List<Transform> myBackLines;
-    public List<Transform> myFrontLines;
 
-    public Transform enemyDeskPos;
-    public Transform enemySummonPos;
-    public List<Transform> enemyBackLines;
-    public List<Transform> enemyFrontLines;
+    [SerializeField] protected Transform myDeskPos;
+    [SerializeField] protected Transform mySummonPos;
+    [SerializeField] protected List<CardPosition> myFrontLines;
+    [SerializeField] protected List<CardPosition> myBackLines;
+
+    [SerializeField] protected Transform enemyDeskPos;
+    [SerializeField] protected Transform enemySummonPos;
+    [SerializeField] protected List<CardPosition> enemyFrontLines;
+    [SerializeField] protected List<CardPosition> enemyBackLines;
+
+    public Transform MyDeskPos { get => myDeskPos; }
+    public Transform MySummonPos { get => mySummonPos; }
+    public List<CardPosition> MyFrontLines { get => myFrontLines; }
+    public List<CardPosition> MyBackLines { get => myBackLines; }
+
+    public Transform EnemyDeskPos { get => enemyDeskPos; }
+    public Transform EnemySummonPos { get => enemySummonPos; }
+    public List<CardPosition> EnemyFrontLines { get => enemyFrontLines; }
+    public List<CardPosition> EnemyBackLines { get => enemyBackLines; }
 
     protected override void LoadComponents()
     {
@@ -49,24 +60,22 @@ public class DeskPositions : SaiMonoBehaviour
         Transform lines = transform.Find("MyBackLines");
         foreach (Transform line in lines)
         {
-            this.myBackLines.Add(line);
+            this.myBackLines.Add(line.GetComponent<CardPosition>());
         }
         Debug.Log(transform.name + ": LoadMyBackLine", gameObject);
     }
 
     protected virtual void LoadMyFrontLines()
     {
-        if (this.myFrontLines.Count > 0) return;
+        if (this.MyFrontLines.Count > 0) return;
 
         Transform lines = transform.Find("MyFrontLines");
         foreach (Transform line in lines)
         {
-            this.myFrontLines.Add(line);
+            this.MyFrontLines.Add(line.GetComponent<CardPosition>());
         }
         Debug.Log(transform.name + ": LoadMyFrontLines", gameObject);
     }
-
-
 
     protected virtual void LoadEnemyDeskPos()
     {
@@ -84,25 +93,56 @@ public class DeskPositions : SaiMonoBehaviour
 
     protected virtual void LoadEnemyBackLines()
     {
-        if (this.enemyBackLines.Count > 0) return;
+        if (this.EnemyBackLines.Count > 0) return;
 
         Transform lines = transform.Find("EnemyBackLines");
         foreach (Transform line in lines)
         {
-            this.enemyBackLines.Add(line);
+            this.EnemyBackLines.Add(line.GetComponent<CardPosition>());
         }
         Debug.Log(transform.name + ": LoadEnemyBackLines", gameObject);
     }
 
     protected virtual void LoadEnemyFrontLines()
     {
-        if (this.enemyFrontLines.Count > 0) return;
+        if (this.EnemyFrontLines.Count > 0) return;
 
         Transform lines = transform.Find("EnemyFrontLines");
         foreach (Transform line in lines)
         {
-            this.enemyFrontLines.Add(line);
+            this.EnemyFrontLines.Add(line.GetComponent<CardPosition>());
         }
         Debug.Log(transform.name + ": LoadEnemyFrontLines", gameObject);
+    }
+
+    public virtual CardPosition GetAvailablePosition(LineType lineType)
+    {
+        List<CardPosition> lines;
+
+        switch (lineType)
+        {
+            case LineType.myFrontLine:
+                lines = this.myFrontLines;
+                break;
+            case LineType.myBackLine:
+                lines = this.myBackLines;
+                break;
+            case LineType.enemyFrontLine:
+                lines = this.enemyFrontLines;
+                break;
+            case LineType.enemyBackLine:
+                lines = this.enemyBackLines;
+                break;
+            default:
+                Debug.LogError("Get Available Position: undefind LineType " + lineType.ToString());
+                return null;
+        }
+
+        foreach (CardPosition line in lines)
+        {
+            if (line.IsAvailable()) return line;
+        }
+
+        return null;
     }
 }

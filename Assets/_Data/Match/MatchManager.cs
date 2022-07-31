@@ -27,75 +27,6 @@ public class MatchManager : SaiMonoBehaviour
     protected override void Start()
     {
         this.SpawmCards();
-        this.MoveMyCardToTest();
-        this.MoveEnemyCardToTest();
-    }
-
-    protected virtual void MoveMyCardToTest()
-    {
-        int cardCount = 0;
-        CardCtrl cardCtrl;
-
-        foreach (Transform cardPos in this.deskPositions.myBackLines)
-        {
-            cardCtrl = this.GetMyMainCard(cardCount);
-            cardCtrl.transform.position = cardPos.position;
-            cardCtrl.cardMovement.ToHorizontal();
-            //cardCtrl.cardMovement.FaceUp();
-
-            cardCount++;
-        }
-
-        foreach (Transform cardPos in this.deskPositions.myFrontLines)
-        {
-            cardCtrl = this.GetMyMainCard(cardCount);
-            cardCtrl.transform.position = cardPos.position;
-            cardCtrl.cardMovement.ToHorizontal();
-            cardCtrl.cardMovement.FaceUp();
-
-            cardCount++;
-        }
-
-        Invoke("MoveMyCardToTest", 1f);
-    }
-
-    protected virtual void MoveEnemyCardToTest()
-    {
-        int cardCount = 0;
-        CardCtrl cardCtrl;
-
-        foreach (Transform cardPos in this.deskPositions.enemyBackLines)
-        {
-            cardCtrl = this.GetEnemyMainCard(cardCount);
-            cardCtrl.transform.position = cardPos.position;
-            cardCtrl.cardMovement.ToHorizontal();
-            //cardCtrl.cardMovement.FaceUp();
-
-            cardCount++;
-        }
-
-        foreach (Transform cardPos in this.deskPositions.enemyFrontLines)
-        {
-            cardCtrl = this.GetEnemyMainCard(cardCount);
-            cardCtrl.transform.position = cardPos.position;
-            //cardCtrl.cardMovement.ToHorizontal();
-            cardCtrl.cardMovement.FaceUp();
-
-            cardCount++;
-        }
-
-        Invoke("MoveMyCardToTest", 1f);
-    }
-
-
-    protected virtual CardCtrl GetMyMainCard(int index)
-    {
-        return this.myMainDesk[index];
-    }
-
-    protected virtual CardCtrl GetEnemyMainCard(int index)
-    {
-        return this.enemyMainDesk[index];
     }
 
     protected override void LoadComponents()
@@ -129,14 +60,14 @@ public class MatchManager : SaiMonoBehaviour
 
     protected virtual void SpawmCards()
     {
-        this.myMainDesk = this.SpawmDesk(this.myDesk.MainCards, this.deskPositions.myDeskPos);
-        this.mySummonDesk = this.SpawmDesk(this.myDesk.SummonCards, this.deskPositions.mySummonPos);
+        this.myMainDesk = this.SpawmDesk(this.myDesk.MainCards, this.deskPositions.MyDeskPos);
+        this.mySummonDesk = this.SpawmDesk(this.myDesk.SummonCards, this.deskPositions.MySummonPos);
 
-        this.enemyMainDesk = this.SpawmDesk(this.enemyDesk.MainCards, this.deskPositions.enemyDeskPos);
-        this.enemySummonDesk = this.SpawmDesk(this.enemyDesk.SummonCards, this.deskPositions.enemySummonPos);
+        this.enemyMainDesk = this.SpawmDesk(this.enemyDesk.MainCards, this.deskPositions.EnemyDeskPos);
+        this.enemySummonDesk = this.SpawmDesk(this.enemyDesk.SummonCards, this.deskPositions.EnemySummonPos);
     }
 
-    protected virtual List<CardCtrl> SpawmDesk(List<Card> cardDesk,Transform deskPos)
+    protected virtual List<CardCtrl> SpawmDesk(List<Card> cardDesk, Transform deskPos)
     {
         int index = 0;
         Vector3 pos;
@@ -155,5 +86,37 @@ public class MatchManager : SaiMonoBehaviour
         }
 
         return cards;
+    }
+
+    public virtual void SendCard2Line(LineType lineType)
+    {
+        CardCtrl cardCtrl = this.WithdrawCard(lineType);
+        cardCtrl.cardMovement.FaceUp();
+
+        CardPosition cardPosition = this.deskPositions.GetAvailablePosition(lineType);
+        if (cardPosition == null)
+        {
+            Debug.LogWarning("SendCard2Line: No more CardPosition at " + lineType.ToString());
+            return;
+        }
+
+        cardPosition.Card = cardCtrl;
+        cardCtrl.transform.position = cardPosition.transform.position;
+    }
+
+    protected virtual CardCtrl WithdrawCard(LineType lineType)
+    {
+        switch (lineType)
+        {
+            case LineType.myBackLine:
+            case LineType.myFrontLine:
+                return this.myMainDesk[0];
+
+            case LineType.enemyBackLine:
+            case LineType.enemyFrontLine:
+                return this.enemyMainDesk[0];
+        }
+
+        return null;
     }
 }
