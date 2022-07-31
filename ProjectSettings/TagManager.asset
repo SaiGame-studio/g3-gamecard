@@ -38,15 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: CardBack
-    uniqueID: 2950224041
-    locked: 0
-  - name: CardImage
-    uniqueID: 3882168323
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: CardData
+  - name: UI
     uniqueID: 106786207
     locked: 0
