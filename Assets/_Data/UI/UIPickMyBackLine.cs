@@ -5,6 +5,6 @@ public class UIPickMyBackLine : SaiMonoBehaviour
 {
     public virtual void OnClick()
     {
-        MatchManager.Instance.SendCard2Line(LineType.myBackLine);
+        ManagerMyDesk.Instance.SendCard2Line(LineType.backLine);
     }
 }
