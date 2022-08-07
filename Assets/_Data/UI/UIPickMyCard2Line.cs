@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPickEnemyHandCard : SaiMonoBehaviour
+public class UIPickMyCard2Line : SaiMonoBehaviour
 {
     public virtual void OnClick()
     {
-        ManagerEnemyDesk.Instance.WithdrawCard();
+        ManagerMyDesk.Instance.SendHandCard2Line(0);
     }
 }

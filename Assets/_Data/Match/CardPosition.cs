@@ -11,4 +11,11 @@ public class CardPosition : SaiMonoBehaviour
     {
         return card == null;
     }
+
+    public virtual void RemoveCard()
+    {
+        CardCtrl card = this.card;
+        this.card = null;
+        card.cardPosition = null;
+    }
 }

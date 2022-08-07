@@ -5,6 +5,7 @@ public class CardCtrl : SaiMonoBehaviour
     public MeshRenderer cardImage;
     public CardData cardData;
     public CardMovement cardMovement;
+    public CardPosition cardPosition;
 
     protected override void LoadComponents()
     {

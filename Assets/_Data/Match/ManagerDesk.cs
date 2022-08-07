@@ -3,11 +3,24 @@ using UnityEngine;
 
 public abstract class ManagerDesk : SaiMonoBehaviour
 {
+    [SerializeField] protected int cardPerLine = 5;
+
     [SerializeField] protected CardPositions cardPositions;
 
     [SerializeField] protected CardManager cardManager;
     [SerializeField] protected List<CardCtrl> mainDesk;
     [SerializeField] protected List<CardCtrl> summonDesk;
+
+    [SerializeField] protected List<CardCtrl> handCards;
+    [SerializeField] protected List<CardCtrl> frontCards;
+    [SerializeField] protected List<CardCtrl> backCards;
+
+    public List<CardCtrl> MainDesk { get => mainDesk; }
+    public List<CardCtrl> SummonDesk { get => summonDesk; }
+
+    public List<CardCtrl> HandCards { get => handCards; }
+    public List<CardCtrl> FrontCards { get => frontCards; }
+    public List<CardCtrl> BackCards { get => backCards; }
 
     protected override void Start()
     {
@@ -64,10 +77,92 @@ public abstract class ManagerDesk : SaiMonoBehaviour
         return cards;
     }
 
-    public virtual void SendCard2Line(LineType lineType)
+    public virtual void WithdrawCard()
     {
-        CardCtrl cardCtrl = this.WithdrawCard(lineType);
-        cardCtrl.cardMovement.FaceUp();
+        if (this.handCards.Count >= this.cardPerLine)
+        {
+            Debug.LogWarning("WithdrawCard: Hand Card Max " + this.cardPerLine.ToString(), gameObject);
+            return;
+        }
+
+        int index = 0;
+        CardCtrl cardCtrl = this.mainDesk[index];
+        this.mainDesk.RemoveAt(index);
+
+        this.handCards.Add(cardCtrl);
+
+        this.SendCardObj2Line(cardCtrl, LineType.handCard);
+    }
+
+    public virtual void SendHandCard2Line(int index)
+    {
+        if (handCards.Count <= 0)
+        {
+            Debug.LogWarning("SendCard2Line: No more Card Hand", gameObject);
+            return;
+        }
+
+        LineType lineType = LineType.frontLine;
+        List<CardCtrl> newLine = this.frontCards;
+
+        CardCtrl cardCtrl = this.handCards[index];
+        if (cardCtrl.cardData.CardSO.cardType == CardType.spell)
+        {
+            newLine = this.backCards;
+            lineType = LineType.backLine;
+        }
+
+        if (newLine.Count >= this.cardPerLine)
+        {
+            Debug.LogWarning("SendCard2Line: Card Max in Line " + this.cardPerLine.ToString(), gameObject);
+            return;
+        }
+
+        this.handCards.RemoveAt(index);
+
+        cardCtrl.cardPosition.RemoveCard();
+
+        newLine.Add(cardCtrl);
+        this.SendCardObj2Line(cardCtrl, lineType);
+    }
+
+    public virtual void Line2Desk(LineType currentLineType, int cardIndex, LineType targetLineType)
+    {
+        List<CardCtrl> currentLine = this.Type2Line(currentLineType);
+        if (currentLine.Count <= 0)
+        {
+            Debug.LogWarning("Line2Desk: Line has no Card "+ currentLineType.ToString(), gameObject);
+            return;
+        }
+
+        CardCtrl cardCtrl = currentLine[cardIndex];
+        currentLine.RemoveAt(cardIndex);
+        cardCtrl.cardPosition.RemoveCard();
+
+        this.CardBackToDesk(cardCtrl, targetLineType);
+    }
+
+    protected virtual void CardBackToDesk(CardCtrl cardCtrl, LineType lineType)
+    {
+        List<CardCtrl> line = this.Type2Line(lineType);
+        line.Add(cardCtrl);
+        cardCtrl.cardMovement.FaceDown();
+        cardCtrl.transform.position = this.cardPositions.mainDeskPos.position;
+    }
+
+    protected virtual List<CardCtrl> Type2Line(LineType lineType)
+    {
+        if (lineType == LineType.frontLine) return this.frontCards;
+        if (lineType == LineType.backLine) return this.backCards;
+        if (lineType == LineType.mainDesk) return this.mainDesk;
+        if (lineType == LineType.summonDesk) return this.summonDesk;
+        return null;
+    }
+
+
+    protected virtual void SendCardObj2Line(CardCtrl cardCtrl, LineType lineType)
+    {
+        cardCtrl.cardMovement.FaceUp();//TODO: for testing, need to remove
 
         CardPosition cardPosition = this.cardPositions.GetAvailablePosition(lineType);
         if (cardPosition == null)
@@ -78,18 +173,8 @@ public abstract class ManagerDesk : SaiMonoBehaviour
 
         cardPosition.Card = cardCtrl;
         cardCtrl.transform.position = cardPosition.transform.position;
+
+        cardCtrl.cardPosition = cardPosition;
     }
 
-    protected virtual CardCtrl WithdrawCard(LineType lineType)
-    {
-        switch (lineType)
-        {
-            case LineType.backLine:
-            case LineType.frontLine:
-            case LineType.handCard:
-                return this.mainDesk[0];
-        }
-
-        return null;
-    }
 }

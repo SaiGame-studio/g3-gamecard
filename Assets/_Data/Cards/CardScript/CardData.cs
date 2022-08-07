@@ -10,6 +10,8 @@ public class CardData : SaiMonoBehaviour
     [SerializeField] protected TextMeshPro cardAttack;
     [SerializeField] protected TextMeshPro cardDefend;
 
+    public CardSO CardSO { get => cardSO;}
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
