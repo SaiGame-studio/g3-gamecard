@@ -6,6 +6,7 @@ public class CardCtrl : SaiMonoBehaviour
     public CardData cardData;
     public CardMovement cardMovement;
     public CardPosition cardPosition;
+    public ManagerDesk managerDesk;
 
     protected override void LoadComponents()
     {

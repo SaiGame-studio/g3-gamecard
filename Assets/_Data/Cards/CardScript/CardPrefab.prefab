@@ -531,6 +531,64 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+--- !u!1 &823993386463458313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3322673232441331388}
+  - component: {fileID: 3174755372223990276}
+  - component: {fileID: 5190130284855818558}
+  m_Layer: 0
+  m_Name: CardClicked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3322673232441331388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823993386463458313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6537842649227945876}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3174755372223990276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823993386463458313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cf803f280917646998af1b0e5d836b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardCtrl: {fileID: 0}
+--- !u!65 &5190130284855818558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823993386463458313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.5, y: 0.2, z: 14.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2563249601832933248
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +1028,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1344743255
-  m_SortingLayer: -2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c7bf45f0ef95bed4491c5809fc6bf484, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1017,6 +1075,7 @@ Transform:
   - {fileID: 8968819680390756269}
   - {fileID: 481045002}
   - {fileID: 334835672209887223}
+  - {fileID: 3322673232441331388}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1035,6 +1094,7 @@ MonoBehaviour:
   cardImage: {fileID: 6537842649350643241}
   cardData: {fileID: 1217002378}
   cardMovement: {fileID: 8668138936061485497}
+  cardPosition: {fileID: 0}
 --- !u!1 &6537842649350643242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1201,7 @@ SortingGroup:
   m_GameObject: {fileID: 6537842649350643242}
   m_Enabled: 1
   m_SortingLayerID: -412798973
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!1 &7428990557781468945
 GameObject:

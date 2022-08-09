@@ -53,6 +53,7 @@ public abstract class ManagerDesk : SaiMonoBehaviour
     protected virtual void SpawmCards()
     {
         this.mainDesk = this.SpawmDesk(this.cardManager.MainCards, this.cardPositions.mainDeskPos);
+
         this.summonDesk = this.SpawmDesk(this.cardManager.SummonCards, this.cardPositions.summonDeskPos);
     }
 
@@ -72,6 +73,7 @@ public abstract class ManagerDesk : SaiMonoBehaviour
             cardCtrl.gameObject.SetActive(true);
 
             cards.Add(cardCtrl);
+            cardCtrl.managerDesk = this;
         }
 
         return cards;
@@ -91,25 +93,18 @@ public abstract class ManagerDesk : SaiMonoBehaviour
 
         this.handCards.Add(cardCtrl);
 
-        this.SendCardObj2Line(cardCtrl, LineType.handCard);
+        this.SendCardObj2Line(cardCtrl, LineType.HandCards);
     }
 
-    public virtual void SendHandCard2Line(int index)
+    public virtual void SendHandCard2Line(CardCtrl cardCtrl)
     {
-        if (handCards.Count <= 0)
-        {
-            Debug.LogWarning("SendCard2Line: No more Card Hand", gameObject);
-            return;
-        }
-
-        LineType lineType = LineType.frontLine;
+        LineType lineType = LineType.FrontLines;
         List<CardCtrl> newLine = this.frontCards;
 
-        CardCtrl cardCtrl = this.handCards[index];
         if (cardCtrl.cardData.CardSO.cardType == CardType.spell)
         {
             newLine = this.backCards;
-            lineType = LineType.backLine;
+            lineType = LineType.BackLines;
         }
 
         if (newLine.Count >= this.cardPerLine)
@@ -118,12 +113,25 @@ public abstract class ManagerDesk : SaiMonoBehaviour
             return;
         }
 
-        this.handCards.RemoveAt(index);
+        this.handCards.Remove(cardCtrl);
 
         cardCtrl.cardPosition.RemoveCard();
 
         newLine.Add(cardCtrl);
         this.SendCardObj2Line(cardCtrl, lineType);
+    }
+
+    public virtual void SendHandCard2Line(int index)
+    {
+        if (this.handCards.Count <= 0)
+        {
+            Debug.LogWarning("SendCard2Line: No more Card Hand", gameObject);
+            return;
+        }
+
+        CardCtrl cardCtrl = this.handCards[index];
+
+        this.SendHandCard2Line(cardCtrl);
     }
 
     public virtual void Line2Desk(LineType currentLineType, int cardIndex, LineType targetLineType)
@@ -152,8 +160,8 @@ public abstract class ManagerDesk : SaiMonoBehaviour
 
     protected virtual List<CardCtrl> Type2Line(LineType lineType)
     {
-        if (lineType == LineType.frontLine) return this.frontCards;
-        if (lineType == LineType.backLine) return this.backCards;
+        if (lineType == LineType.FrontLines) return this.frontCards;
+        if (lineType == LineType.BackLines) return this.backCards;
         if (lineType == LineType.mainDesk) return this.mainDesk;
         if (lineType == LineType.summonDesk) return this.summonDesk;
         return null;
@@ -171,7 +179,7 @@ public abstract class ManagerDesk : SaiMonoBehaviour
             return;
         }
 
-        cardPosition.Card = cardCtrl;
+        cardPosition.AddCard(cardCtrl);
         cardCtrl.transform.position = cardPosition.transform.position;
 
         cardCtrl.cardPosition = cardPosition;

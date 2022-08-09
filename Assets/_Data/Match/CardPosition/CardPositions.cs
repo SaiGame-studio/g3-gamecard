@@ -76,13 +76,13 @@ public class CardPositions : SaiMonoBehaviour
 
         switch (lineType)
         {
-            case LineType.frontLine:
+            case LineType.FrontLines:
                 lines = this.frontLines;
                 break;
-            case LineType.backLine:
+            case LineType.BackLines:
                 lines = this.backLines;
                 break;
-            case LineType.handCard:
+            case LineType.HandCards:
                 lines = this.handCards;
                 break;
             default:
