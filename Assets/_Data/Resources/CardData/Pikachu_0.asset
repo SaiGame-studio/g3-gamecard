@@ -15,6 +15,7 @@ MonoBehaviour:
   cardID: 10
   cardName: Pikachu
   cardType: 1
+  skillName: 1
   cardDescription: Pikachu attack with electric abilities, can transform to become
     stronger.
   image: {fileID: 2100000, guid: 5775193c7f8dfae4a97f4e167210bc9d, type: 2}

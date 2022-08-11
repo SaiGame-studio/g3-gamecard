@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CardMovement : SaiMonoBehaviour
+public class CardMovement : CardCtrlAbstract
 {
     [SerializeField] protected bool isAttack = true;
 
@@ -24,6 +24,8 @@ public class CardMovement : SaiMonoBehaviour
 
     public virtual void SwitchPosition()
     {
+        if (this.cardCtrl.cardData.CardSO.cardType == CardType.spell) return;
+
         this.isAttack = !this.isAttack;
         if (this.isAttack) this.ToAttack();
         else this.ToDefence();

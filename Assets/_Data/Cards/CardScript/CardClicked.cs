@@ -1,25 +1,36 @@
 using UnityEngine;
 
-public class CardClicked : SaiMonoBehaviour
+public class CardClicked : CardCtrlAbstract
 {
-    public CardCtrl cardCtrl;
+    [SerializeField] protected bool isLeftClick = false;
+    [SerializeField] protected bool isRightClick = false;
+    [SerializeField] protected bool isMiddleClick = false;
 
-    protected override void LoadComponents()
+    protected virtual void OnMouseOver()
     {
-        base.LoadComponents();
-        this.LoadCardCtrl();
+        this.isLeftClick = Input.GetMouseButtonDown(0);
+        this.isRightClick = Input.GetMouseButtonDown(1);
+        this.isMiddleClick = Input.GetMouseButtonDown(2);
+
+        if (this.isLeftClick) this.OnMainActive();
+        if (this.isRightClick) this.OnSecondActive();
+        if (this.isMiddleClick) this.OnMiddleActive();
     }
 
-    protected virtual void LoadCardCtrl()
+    protected virtual void OnSecondActive()
     {
-        if (this.cardCtrl != null) return;
-        this.cardCtrl = transform.parent.GetComponent<CardCtrl>();
-        Debug.Log(transform.name + ": LoadCardCtrl", gameObject);
+        this.cardCtrl.cardAction.Active();
     }
 
-    protected virtual void OnMouseDown()
+    protected virtual void OnMiddleActive()
+    {
+        ManagerMyDesk.Instance.Line2Desk(this.cardCtrl, LineType.BackLines, LineType.mainDesk);
+    }
+
+    protected virtual void OnMainActive()
     {
         CardPosition cardPosition = this.cardCtrl.cardPosition;
+        if (cardPosition == null) return;
 
         switch (cardPosition.LineType)
         {
@@ -27,11 +38,8 @@ public class CardClicked : SaiMonoBehaviour
                 this.cardCtrl.managerDesk.SendHandCard2Line(cardCtrl);
                 break;
             default:
-                cardCtrl.cardMovement.SwitchPosition();
+                this.cardCtrl.cardMovement.SwitchPosition();
                 break;
         }
-
-        //string positionName = cardPosition.transform.parent.name;
-        //Debug.Log(transform.parent.name + ": OnMouseDown " + positionName, gameObject);
     }
 }

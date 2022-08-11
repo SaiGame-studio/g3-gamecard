@@ -15,6 +15,7 @@ MonoBehaviour:
   cardID: 1000
   cardName: Katana
   cardType: 2
+  skillName: 1
   cardDescription: Add 1 attack to Normal Card. This card will transform Pikachu
     to Zenitchu.
   image: {fileID: 2100000, guid: 37250d4f717beaa4ea28ffda1f414ed3, type: 2}

@@ -15,6 +15,7 @@ MonoBehaviour:
   cardID: 1
   cardName: Mikasa Ackerman
   cardType: 0
+  skillName: 1
   cardDescription: She often threw boys bigger than her with ease and scared them
     enough to run away upon seeing her despite their superior numbers.
   image: {fileID: 2100000, guid: f8a748d7a5fea77498aa0201a31be43c, type: 2}

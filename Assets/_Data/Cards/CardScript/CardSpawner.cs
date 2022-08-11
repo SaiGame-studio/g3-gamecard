@@ -103,6 +103,15 @@ public class CardSpawner : SaiMonoBehaviour
         CardCtrl cardCtrl = newCard.GetComponent<CardCtrl>();
         cardCtrl.cardData.SetSO(cardSO);
 
+        GameObject cardSkillObj = CardSkillManager.Instance.Create(cardSO.skillName);
+        cardSkillObj.transform.parent = cardCtrl.cardAction.transform;
+        cardSkillObj.SetActive(true);
+
+        CardSkill cardSkill = cardSkillObj.GetComponent<CardSkill>();
+        cardSkill.cardCtrl = cardCtrl;
+
+        cardCtrl.cardAction.cardSkill = cardSkill;
+
         return cardCtrl;
     }
 }

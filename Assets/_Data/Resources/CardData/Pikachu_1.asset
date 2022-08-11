@@ -15,6 +15,7 @@ MonoBehaviour:
   cardID: 11
   cardName: Zenitchu
   cardType: 3
+  skillName: 1
   cardDescription: Zenitchu is an incredibly talented swordsman, especially in his
     proficiency in extremely fast Iaijutsu-like swordsmanship and the Thunderclap
     and Flash technique.
