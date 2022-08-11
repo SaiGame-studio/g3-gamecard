@@ -305,7 +305,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1217002377}
-  - component: {fileID: 1017661461}
   - component: {fileID: 1217002378}
   m_Layer: 0
   m_Name: CardData
@@ -332,17 +331,6 @@ Transform:
   m_Father: {fileID: 6537842649227945876}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &1017661461
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217002376}
-  m_Enabled: 1
-  m_SortingLayerID: 106786207
-  m_SortingLayer: 1
-  m_SortingOrder: 0
 --- !u!114 &1217002378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cf803f280917646998af1b0e5d836b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardCtrl: {fileID: 0}
+  cardCtrl: {fileID: 511398331377522505}
 --- !u!65 &5190130284855818558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1027,7 +1015,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1344743255
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c7bf45f0ef95bed4491c5809fc6bf484, type: 3}
@@ -1095,6 +1083,7 @@ MonoBehaviour:
   cardData: {fileID: 1217002378}
   cardMovement: {fileID: 8668138936061485497}
   cardPosition: {fileID: 0}
+  managerDesk: {fileID: 0}
 --- !u!1 &6537842649350643242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1096,6 @@ GameObject:
   - component: {fileID: 6537842649350643246}
   - component: {fileID: 6537842649350643241}
   - component: {fileID: 6537842649350643240}
-  - component: {fileID: 1325325212}
   m_Layer: 0
   m_Name: CardImage
   m_TagString: Untagged
@@ -1192,17 +1180,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!210 &1325325212
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6537842649350643242}
-  m_Enabled: 1
-  m_SortingLayerID: -412798973
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &7428990557781468945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,3 +1223,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909fc470365adcf43b56da0547681277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardCtrl: {fileID: 511398331377522505}
+  isAttack: 1

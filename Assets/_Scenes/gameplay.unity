@@ -2654,7 +2654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPerLine: 5
-  cardPositions: {fileID: 0}
+  cardPositions: {fileID: 2096440264}
   cardManager: {fileID: 1963544745}
   mainDesk: []
   summonDesk: []
@@ -2854,6 +2854,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972285964}
   m_CullTransparentMesh: 1
+--- !u!114 &2096440264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1365525874394890493, guid: 7689d16fd1128c145944e2db16e4a60e, type: 3}
+  m_PrefabInstance: {fileID: 1365525874616262443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c56416b938caa1469af4c5c7f59ffa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2097716438
 GameObject:
   m_ObjectHideFlags: 0
