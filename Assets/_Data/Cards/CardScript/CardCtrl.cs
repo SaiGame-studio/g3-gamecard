@@ -6,6 +6,7 @@ public class CardCtrl : SaiMonoBehaviour
     public CardData cardData;
     public CardMovement cardMovement;
     public CardPosition cardPosition;
+    public CardAction cardAction;
     public ManagerDesk managerDesk;
 
     protected override void LoadComponents()
@@ -14,6 +15,7 @@ public class CardCtrl : SaiMonoBehaviour
         this.LoadCardImage();
         this.LoadCardData();
         this.LoadCardMovement();
+        this.LoadCardAction();
     }
 
     protected virtual void LoadCardImage()
@@ -35,5 +37,12 @@ public class CardCtrl : SaiMonoBehaviour
         if (this.cardMovement != null) return;
         this.cardMovement = transform.Find("CardMovement").GetComponent<CardMovement>();
         Debug.Log(transform.name + ": LoadCardMovement", gameObject);
+    }
+
+    protected virtual void LoadCardAction()
+    {
+        if (this.cardAction != null) return;
+        this.cardAction = transform.Find("CardAction").GetComponent<CardAction>();
+        Debug.Log(transform.name + ": LoadCardAction", gameObject);
     }
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   cardID: 4
   cardName: Mikasa Reborn
   cardType: 2
+  skillName: 1
   cardDescription: Mikasa go back to battle field immediately
   image: {fileID: 2100000, guid: f8de961d2867131458e2fc6839fea84d, type: 2}
   attack: 0

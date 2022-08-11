@@ -564,6 +564,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardCtrl: {fileID: 511398331377522505}
+  isLeftClick: 0
+  isRightClick: 0
+  isMiddleClick: 0
 --- !u!65 &5190130284855818558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -756,6 +759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8968819680390756269}
+  - component: {fileID: 3836775571425383017}
   m_Layer: 0
   m_Name: CardAction
   m_TagString: Untagged
@@ -777,6 +781,19 @@ Transform:
   m_Father: {fileID: 6537842649227945876}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3836775571425383017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325122092866186058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db2966cb1b21b84b872f2c9ceb052aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardCtrl: {fileID: 511398331377522505}
 --- !u!1 &5941498037170129153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1100,7 @@ MonoBehaviour:
   cardData: {fileID: 1217002378}
   cardMovement: {fileID: 8668138936061485497}
   cardPosition: {fileID: 0}
+  cardAction: {fileID: 3836775571425383017}
   managerDesk: {fileID: 0}
 --- !u!1 &6537842649350643242
 GameObject:

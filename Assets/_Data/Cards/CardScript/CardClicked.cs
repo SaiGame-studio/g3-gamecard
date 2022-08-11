@@ -12,27 +12,27 @@ public class CardClicked : CardCtrlAbstract
         this.isRightClick = Input.GetMouseButtonDown(1);
         this.isMiddleClick = Input.GetMouseButtonDown(2);
 
-        if (this.isLeftClick) this.OnMainClicked();
-        if (this.isRightClick) this.OnActiveClicked();
-        if (this.isMiddleClick) this.OnMiddleClicked();
+        if (this.isLeftClick) this.OnMainActive();
+        if (this.isRightClick) this.OnSecondActive();
+        if (this.isMiddleClick) this.OnMiddleActive();
     }
 
-    protected virtual void OnActiveClicked()
+    protected virtual void OnSecondActive()
     {
-        Debug.Log(transform.parent.name + " On Active Clicked", gameObject);
+        this.cardCtrl.cardAction.Active();
     }
 
-    protected virtual void OnMiddleClicked()
+    protected virtual void OnMiddleActive()
     {
-        Debug.Log(transform.parent.name + " On Middle Clicked", gameObject);
+        ManagerMyDesk.Instance.Line2Desk(this.cardCtrl, LineType.BackLines, LineType.mainDesk);
     }
 
-    protected virtual void OnMainClicked()
+    protected virtual void OnMainActive()
     {
         CardPosition cardPosition = this.cardCtrl.cardPosition;
         if (cardPosition == null) return;
 
-            switch (cardPosition.LineType)
+        switch (cardPosition.LineType)
         {
             case LineType.HandCards:
                 this.cardCtrl.managerDesk.SendHandCard2Line(cardCtrl);

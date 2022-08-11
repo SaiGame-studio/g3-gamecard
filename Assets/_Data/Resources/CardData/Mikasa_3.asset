@@ -15,6 +15,7 @@ MonoBehaviour:
   cardID: 3
   cardName: Mikasa's Dual Swords
   cardType: 2
+  skillName: 1
   cardDescription: Allow Mikasa attack 2 enemies at same time.
   image: {fileID: 2100000, guid: cd8bd129869a7b34e85541da977f9bba, type: 2}
   attack: 0

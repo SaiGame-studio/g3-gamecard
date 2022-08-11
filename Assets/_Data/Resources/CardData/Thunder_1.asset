@@ -15,8 +15,10 @@ MonoBehaviour:
   cardID: 1001
   cardName: Thunder
   cardType: 2
+  skillName: 2
   cardDescription: Kill 3 enemies have 1 defend.
   image: {fileID: 2100000, guid: 7e87c8909a4570b43b6320b0d72b2885, type: 2}
   attack: 1
-  defend: 0
+  defend: 1
+  targetCount: 3
   maxInDesk: 3

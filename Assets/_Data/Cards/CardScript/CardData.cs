@@ -1,9 +1,8 @@
 using TMPro;
 using UnityEngine;
 
-public class CardData : SaiMonoBehaviour
+public class CardData : CardCtrlAbstract
 {
-    public CardCtrl cardCtrl;
     [SerializeField] protected CardSO cardSO;
     [SerializeField] protected TextMeshPro cardName;
     [SerializeField] protected TextMeshPro cardDescription;
@@ -15,7 +14,6 @@ public class CardData : SaiMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadCardCtrl();
         this.LoadCardName();
         this.LoadCardDescription();
         this.LoadCardAttributes();
@@ -25,13 +23,6 @@ public class CardData : SaiMonoBehaviour
     {
         base.OnEnable();
         this.LoadCardData();
-    }
-
-    protected virtual void LoadCardCtrl()
-    {
-        if (this.cardCtrl != null) return;
-        this.cardCtrl = transform.parent.GetComponent<CardCtrl>();
-        Debug.Log(transform.name + ": LoadCardCtrl", gameObject);
     }
 
     protected virtual void LoadCardName()

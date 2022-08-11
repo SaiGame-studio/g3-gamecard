@@ -119,6 +119,7 @@ public abstract class ManagerDesk : SaiMonoBehaviour
 
         newLine.Add(cardCtrl);
         this.SendCardObj2Line(cardCtrl, lineType);
+        cardCtrl.cardMovement.FaceDown();
     }
 
     public virtual void SendHandCard2Line(int index)
@@ -134,6 +135,20 @@ public abstract class ManagerDesk : SaiMonoBehaviour
         this.SendHandCard2Line(cardCtrl);
     }
 
+    public virtual void Line2Desk(CardCtrl cardCtrl, LineType currentLineType, LineType targetLineType)
+    {
+        List<CardCtrl> currentLine = this.Type2Line(currentLineType);
+        currentLine.Remove(cardCtrl);
+        cardCtrl.cardPosition.RemoveCard();
+        this.CardBackToDesk(cardCtrl, targetLineType);
+    }
+
+    /// <summary>
+    /// TODO: remove this method
+    /// </summary>
+    /// <param name="currentLineType"></param>
+    /// <param name="cardIndex"></param>
+    /// <param name="targetLineType"></param>
     public virtual void Line2Desk(LineType currentLineType, int cardIndex, LineType targetLineType)
     {
         List<CardCtrl> currentLine = this.Type2Line(currentLineType);
@@ -144,10 +159,7 @@ public abstract class ManagerDesk : SaiMonoBehaviour
         }
 
         CardCtrl cardCtrl = currentLine[cardIndex];
-        currentLine.RemoveAt(cardIndex);
-        cardCtrl.cardPosition.RemoveCard();
-
-        this.CardBackToDesk(cardCtrl, targetLineType);
+        this.Line2Desk(cardCtrl, currentLineType, targetLineType);
     }
 
     protected virtual void CardBackToDesk(CardCtrl cardCtrl, LineType lineType)
