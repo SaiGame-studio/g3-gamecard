@@ -10,9 +10,4 @@ public class CardAction : CardCtrlAbstract
         this.cardSkill.Active();
         Debug.Log(transform.parent.name + " CardAction", gameObject);
     }
-
-    public virtual void AddSkill()
-    {
-        this.cardSkill.cardCtrl = this.cardCtrl;
-    }
 }
