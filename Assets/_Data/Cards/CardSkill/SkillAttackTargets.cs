@@ -10,4 +10,9 @@ public class SkillAttackTargets : CardSkill
         int targetCount = this.cardCtrl.cardData.CardSO.targetCount;
         Debug.Log(transform.parent.parent.name + " SkillAttackTargets "+ targetCount.ToString(), gameObject);
     }
+
+    protected override void SkillActive()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -493,6 +493,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 439407234}
   - {fileID: 1901949840}
   - {fileID: 774800744}
   m_Father: {fileID: 0}
@@ -503,6 +504,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1365525874394890494, guid: 7689d16fd1128c145944e2db16e4a60e, type: 3}
   m_PrefabInstance: {fileID: 1365525874616262443}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &439407233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439407234}
+  - component: {fileID: 439407235}
+  m_Layer: 0
+  m_Name: MatchManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &439407234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439407233}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: 5, z: -59.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 247308563}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &439407235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439407233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db7200376802de45a195dbaccd9c5ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardChoose: {fileID: 0}
 --- !u!1 &494583440
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +856,7 @@ Transform:
   m_Children:
   - {fileID: 1646888232}
   m_Father: {fileID: 247308563}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &774800745
 MonoBehaviour:
@@ -1026,6 +1071,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardCtrl: {fileID: 0}
+  processing: 0
+  canActive: 0
+  targetChoosing: 0
   target: {fileID: 0}
 --- !u!1 &929753911
 GameObject:
@@ -1071,6 +1119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardCtrl: {fileID: 0}
+  processing: 0
+  canActive: 0
+  targetChoosing: 0
   targets: []
 --- !u!1 &1053104746
 GameObject:
@@ -2778,7 +2829,7 @@ Transform:
   m_Children:
   - {fileID: 317906901}
   m_Father: {fileID: 247308563}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1901949841
 MonoBehaviour:

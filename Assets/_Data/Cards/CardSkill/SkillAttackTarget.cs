@@ -6,6 +6,11 @@ public class SkillAttackTarget : CardSkill
 
     public override void Active()
     {
-        Debug.Log(transform.parent.parent.name + " SkillAttackTarget", gameObject);
+        this.targetChoosing = true;
+    }
+
+    protected override void SkillActive()
+    {
+        throw new System.NotImplementedException();
     }
 }

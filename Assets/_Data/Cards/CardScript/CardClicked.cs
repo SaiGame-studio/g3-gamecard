@@ -12,7 +12,12 @@ public class CardClicked : CardCtrlAbstract
         this.isRightClick = Input.GetMouseButtonDown(1);
         this.isMiddleClick = Input.GetMouseButtonDown(2);
 
-        if (this.isLeftClick) this.OnMainActive();
+        if (this.isLeftClick)
+        {
+            MatchManager.Instance.ChooseCard(this.cardCtrl);
+            this.OnMainActive();
+        }
+
         if (this.isRightClick) this.OnSecondActive();
         if (this.isMiddleClick) this.OnMiddleActive();
     }
