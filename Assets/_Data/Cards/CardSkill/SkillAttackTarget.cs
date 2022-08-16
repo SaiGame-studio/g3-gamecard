@@ -2,10 +2,30 @@ using UnityEngine;
 
 public class SkillAttackTarget : CardSkill
 {
-    [SerializeField] protected CardCtrl target;
-
     public override void Active()
     {
-        Debug.Log(transform.parent.parent.name + " SkillAttackTarget", gameObject);
+        this.targetChoosing = true;
+    }
+
+    protected override void SkillActive()
+    {
+        base.SkillActive();
+
+        foreach(CardCtrl target in this.targets)
+        {
+            this.AttackTarget(this.cardCtrl,target);
+        }
+    }
+
+    protected virtual void AttackTarget(CardCtrl attacker, CardCtrl target)
+    {
+        int attackerDamage = attacker.cardData.CardSO.attack;
+
+        //TODO: check card status is attack or defence
+        int targetDamage = target.cardData.CardSO.attack;
+
+        //TODO: card type is Leader, Normal or Summon
+        if (attackerDamage >= targetDamage) target.managerDesk.Line2Desk(target, LineType.mainDesk);
+        else attacker.managerDesk.Line2Desk(target, LineType.mainDesk);
     }
 }

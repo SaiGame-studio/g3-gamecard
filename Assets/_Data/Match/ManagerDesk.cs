@@ -143,6 +143,14 @@ public abstract class ManagerDesk : SaiMonoBehaviour
         this.CardBackToDesk(cardCtrl, targetLineType);
     }
 
+    public virtual void Line2Desk(CardCtrl cardCtrl, LineType targetLineType)
+    {
+        if (cardCtrl.cardPosition == null) return;
+
+        LineType currentLineType = cardCtrl.cardPosition.LineType;
+        this.Line2Desk(cardCtrl, currentLineType, targetLineType);
+    }
+
     /// <summary>
     /// TODO: remove this method
     /// </summary>
@@ -154,7 +162,7 @@ public abstract class ManagerDesk : SaiMonoBehaviour
         List<CardCtrl> currentLine = this.Type2Line(currentLineType);
         if (currentLine.Count <= 0)
         {
-            Debug.LogWarning("Line2Desk: Line has no Card "+ currentLineType.ToString(), gameObject);
+            Debug.LogWarning("Line2Desk: Line has no Card " + currentLineType.ToString(), gameObject);
             return;
         }
 

@@ -20,5 +20,6 @@ MonoBehaviour:
     enough to run away upon seeing her despite their superior numbers.
   image: {fileID: 2100000, guid: f8a748d7a5fea77498aa0201a31be43c, type: 2}
   attack: 4
-  defend: 2
+  defend: 5
+  targetCount: 1
   maxInDesk: 1
