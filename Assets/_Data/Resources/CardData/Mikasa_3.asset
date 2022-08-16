@@ -20,4 +20,5 @@ MonoBehaviour:
   image: {fileID: 2100000, guid: cd8bd129869a7b34e85541da977f9bba, type: 2}
   attack: 0
   defend: 0
-  maxInDesk: 3
+  targetCount: 2
+  maxInDesk: 1

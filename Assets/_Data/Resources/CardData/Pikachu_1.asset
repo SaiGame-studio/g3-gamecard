@@ -21,5 +21,6 @@ MonoBehaviour:
     and Flash technique.
   image: {fileID: 2100000, guid: 492bd2cce081d714297ccd78e5f07348, type: 2}
   attack: 4
-  defend: 3
+  defend: 4
+  targetCount: 1
   maxInDesk: 3

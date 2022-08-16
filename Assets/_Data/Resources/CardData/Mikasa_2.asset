@@ -18,6 +18,7 @@ MonoBehaviour:
   skillName: 1
   cardDescription: Double Mikasa's Attack, can active 1 card only.
   image: {fileID: 2100000, guid: 20da93f910f9d4c4daecc5b73ca87cdb, type: 2}
-  attack: 0
+  attack: 2
   defend: 0
-  maxInDesk: 3
+  targetCount: 0
+  maxInDesk: 1

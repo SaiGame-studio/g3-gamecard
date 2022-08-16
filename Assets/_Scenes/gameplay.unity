@@ -961,6 +961,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
   - {fileID: 11400000, guid: 4fed9173d5ccf524fa9adb29982774dd, type: 2}
   - {fileID: 11400000, guid: 057cae86d2b928f4698e013c2ba0b8d7, type: 2}
+  - {fileID: 11400000, guid: 6a3ff645464c54a43bb17ab490391566, type: 2}
+  - {fileID: 11400000, guid: 4f187d406f586544a9d8463c0333223d, type: 2}
+  - {fileID: 11400000, guid: 48d5bf451db40f749bc2704777304787, type: 2}
+  - {fileID: 11400000, guid: b69bebbd5e0e7614587318e9d6461c6f, type: 2}
 --- !u!1 &774800743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,8 +1213,8 @@ MonoBehaviour:
   processing: 0
   targetChoosing: 0
   hasEnoughTarget: 0
+  targetLimit: 1
   targets: []
-  targetMax: 1
 --- !u!1 &1053104746
 GameObject:
   m_ObjectHideFlags: 0
