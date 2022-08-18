@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardManager : SaiMonoBehaviour
+public abstract class CardManager : SaiMonoBehaviour
 {
     [Header("Desk Manager")]
+    [SerializeField] protected CardManagerData cardManagerData;
     [SerializeField] protected CardSpawner cardSpawner;
     [SerializeField] protected List<Card> mainCards;
     [SerializeField] protected List<Card> summonCards;
@@ -12,18 +13,32 @@ public class CardManager : SaiMonoBehaviour
 
     public List<Card> MainCards { get => mainCards; }
     public List<Card> SummonCards { get => summonCards; }
+    public List<Card> NotUseCards { get => notUseCards; }
 
     protected override void Awake()
     {
         base.Awake();
-        this.CreateTestMainDesk();//TODO: for testing only
+        //this.CreateTestMainDesk();//TODO: for testing only
+        //this.cardManagerData.LoadData(this);
+        this.LoadDataSO();
     }
+
+    protected virtual void LoadDataSO()
+    {
+        this.mainCards = this.cardManagerData.mainCards;
+        this.summonCards = this.cardManagerData.summonCards;
+        this.notUseCards = this.cardManagerData.notUseCards;
+    }
+
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCardSpawner();
+        this.LoadCardManagerData();
     }
+
+    protected abstract void LoadCardManagerData();
 
     protected virtual void LoadCardSpawner()
     {

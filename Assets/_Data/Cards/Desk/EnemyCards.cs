@@ -13,4 +13,9 @@ public class EnemyCards : CardManager
         if (EnemyCards.instance != null) Debug.LogError("Only 1 EnemyCards allow");
         EnemyCards.instance = this;
     }
+
+    protected override void LoadCardManagerData()
+    {
+        this.cardManagerData = Resources.Load("CardManager/EnemyDataSO") as CardManagerData;
+    }
 }

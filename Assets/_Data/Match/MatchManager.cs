@@ -5,6 +5,7 @@ public class MatchManager : SaiMonoBehaviour
 {
     protected static MatchManager instance;
     public static MatchManager Instance { get => instance; }
+    public CardCtrl cardAttacking;
     public CardCtrl cardChoose;
     public ManagerDesk currentDesk;
 
@@ -27,9 +28,21 @@ public class MatchManager : SaiMonoBehaviour
         return this.cardChoose;
     }
 
+    public virtual CardCtrl SetCardAttacking(CardCtrl cardCtrl)
+    {
+        this.cardAttacking = cardCtrl;
+        return this.cardAttacking;
+    }
+
     public virtual bool IsCurrentDesk(ManagerDesk checkDesk)
     {
         return this.currentDesk == checkDesk;
+    }
+
+    public virtual bool IsCardAttacking(CardCtrl cardCtrl)
+    {
+        //if (this.cardAttacking == null) return true;
+        return this.cardAttacking == cardCtrl;
     }
 
     public virtual void ChangeDesk(ManagerDesk newDesk)

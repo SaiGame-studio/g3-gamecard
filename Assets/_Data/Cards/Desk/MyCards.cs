@@ -13,4 +13,9 @@ public class MyCards : CardManager
         if (MyCards.instance != null) Debug.LogError("Only 1 MyCards allow");
         MyCards.instance = this;
     }
+
+    protected override void LoadCardManagerData()
+    {
+        this.cardManagerData = Resources.Load("CardManager/MyDataSO") as CardManagerData;
+    }
 }
