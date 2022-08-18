@@ -15,6 +15,7 @@ public class SaiMonoBehaviour : MonoBehaviour
     protected virtual void Reset()
     {
         this.LoadComponents();
+        this.ResetValue();
     }
 
     protected virtual void Update()
@@ -40,5 +41,10 @@ public class SaiMonoBehaviour : MonoBehaviour
     protected virtual void LoadComponents()
     {
         //For override   
+    }
+
+    protected virtual void ResetValue()
+    {
+        //For orverride
     }
 }

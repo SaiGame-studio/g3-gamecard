@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335e3db1682fe6d42be55690dc226519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardManagerData: {fileID: 11400000, guid: 0eff74abbd11ab3499f8ec7468e21589, type: 2}
   cardSpawner: {fileID: 679480264}
   mainCards: []
   summonCards: []
@@ -2420,6 +2421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e591d36cb22e9454e93ba7d7e2b2b821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardManagerData: {fileID: 11400000, guid: e571498c532b13a4d850adafad311f27, type: 2}
   cardSpawner: {fileID: 679480264}
   mainCards: []
   summonCards: []

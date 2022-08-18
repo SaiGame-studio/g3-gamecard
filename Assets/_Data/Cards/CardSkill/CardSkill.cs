@@ -31,6 +31,7 @@ public abstract class CardSkill : SaiMonoBehaviour
 
     protected virtual void Processing()
     {
+        if (!MatchManager.Instance.IsCardAttacking(this.cardCtrl)) this.DeactiveSkill();
         if (!MatchManager.Instance.IsCurrentDesk(this.cardCtrl.managerDesk)) this.DeactiveSkill();
 
         if (this.targetChoosing) this.TargetChoosing();
@@ -58,8 +59,11 @@ public abstract class CardSkill : SaiMonoBehaviour
         CardCtrl lastCardChoose = MatchManager.Instance.cardChoose;
         if (lastCardChoose == null) return;
         if (lastCardChoose == this.cardCtrl) return;
+        if (lastCardChoose.cardPosition == null) return;
         if (this.cardCtrl.managerDesk == lastCardChoose.managerDesk) return;
+
         if (lastCardChoose.cardPosition.LineType != LineType.FrontLines) return;
+        if (this.targets.Contains(lastCardChoose)) return;
 
         this.targets.Add(lastCardChoose);
 

@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: MyDataSO
+  m_EditorClassIdentifier: Assembly-CSharp::CardManagerData
+  mainCards:
+  - name: Mikasa Ackerman
+    cardID: 1
+    cardSO: {fileID: 11400000, guid: cc8273c297aff5643870de86f7685b44, type: 2}
+    useCount: 0
+  - name: Pikachu
+    cardID: 10
+    cardSO: {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
+    useCount: 0
+  - name: Pikachu
+    cardID: 10
+    cardSO: {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
+    useCount: 0
+  - name: Pikachu
+    cardID: 10
+    cardSO: {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
+    useCount: 0
+  - name: Jinx
+    cardID: 20
+    cardSO: {fileID: 11400000, guid: 6a3ff645464c54a43bb17ab490391566, type: 2}
+    useCount: 0
+  - name: Jinx
+    cardID: 20
+    cardSO: {fileID: 11400000, guid: 6a3ff645464c54a43bb17ab490391566, type: 2}
+    useCount: 0
+  - name: Jinx
+    cardID: 20
+    cardSO: {fileID: 11400000, guid: 6a3ff645464c54a43bb17ab490391566, type: 2}
+    useCount: 0
+  summonCards:
+  - name: Zenitchu
+    cardID: 11
+    cardSO: {fileID: 11400000, guid: 9ba21cd69045f7b449a5ee794c2da953, type: 2}
+    useCount: 0
+  - name: Zenitchu
+    cardID: 11
+    cardSO: {fileID: 11400000, guid: 9ba21cd69045f7b449a5ee794c2da953, type: 2}
+    useCount: 0
+  - name: Zenitchu
+    cardID: 11
+    cardSO: {fileID: 11400000, guid: 9ba21cd69045f7b449a5ee794c2da953, type: 2}
+    useCount: 0
+  - name: Crazy Jinx
+    cardID: 23
+    cardSO: {fileID: 11400000, guid: b69bebbd5e0e7614587318e9d6461c6f, type: 2}
+    useCount: 0
+  - name: Crazy Jinx
+    cardID: 23
+    cardSO: {fileID: 11400000, guid: b69bebbd5e0e7614587318e9d6461c6f, type: 2}
+    useCount: 0
+  - name: Crazy Jinx
+    cardID: 23
+    cardSO: {fileID: 11400000, guid: b69bebbd5e0e7614587318e9d6461c6f, type: 2}
+    useCount: 0
+  notUseCards:
+  - name: Mikasa's Anger
+    cardID: 2
+    cardSO: {fileID: 11400000, guid: cfe232b256f561e4e853f388d2430dd5, type: 2}
+    useCount: 0
+  - name: Pikachu
+    cardID: 10
+    cardSO: {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
+    useCount: 0
+  - name: Thunder
+    cardID: 1001
+    cardSO: {fileID: 11400000, guid: 057cae86d2b928f4698e013c2ba0b8d7, type: 2}
+    useCount: 0
+  - name: Katana
+    cardID: 1000
+    cardSO: {fileID: 11400000, guid: 4fed9173d5ccf524fa9adb29982774dd, type: 2}
+    useCount: 0
+  - name: Jinx's Boom
+    cardID: 22
+    cardSO: {fileID: 11400000, guid: 48d5bf451db40f749bc2704777304787, type: 2}
+    useCount: 0
+  - name: Jinx Grown Up
+    cardID: 21
+    cardSO: {fileID: 11400000, guid: 4f187d406f586544a9d8463c0333223d, type: 2}
+    useCount: 0
+  - name: Jinx
+    cardID: 20
+    cardSO: {fileID: 11400000, guid: 6a3ff645464c54a43bb17ab490391566, type: 2}
+    useCount: 0
+  - name: Pikachu
+    cardID: 10
+    cardSO: {fileID: 11400000, guid: 1c230a0f4d1443442805a165177ef1c8, type: 2}
+    useCount: 0
+  - name: Mikasa Reborn
+    cardID: 4
+    cardSO: {fileID: 11400000, guid: 7d723f1d9a01249419d0a83b0933a020, type: 2}
+    useCount: 0
+  - name: Mikasa's Dual Swords
+    cardID: 3
+    cardSO: {fileID: 11400000, guid: bccc31fb5fda858489e09b96ae2b9940, type: 2}
+    useCount: 0
+  - name: Mikasa's Anger
+    cardID: 2
+    cardSO: {fileID: 11400000, guid: cfe232b256f561e4e853f388d2430dd5, type: 2}
+    useCount: 0
