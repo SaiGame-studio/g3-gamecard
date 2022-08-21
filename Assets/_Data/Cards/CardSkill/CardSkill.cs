@@ -10,7 +10,8 @@ public abstract class CardSkill : SaiMonoBehaviour
     [SerializeField] protected int targetLimit = 1;
     [SerializeField] protected List<CardCtrl> targets;
 
-    public List<CardCtrl> Targets { get => targets;}
+    public List<CardCtrl> Targets { get => targets; }
+    public bool TargetChoosing { get => targetChoosing; }
 
     public abstract void Active();
 
@@ -42,7 +43,7 @@ public abstract class CardSkill : SaiMonoBehaviour
         if (!MatchManager.Instance.IsCardAttacking(this.cardCtrl)) this.DeactiveSkill();
         if (!MatchManager.Instance.IsCurrentDesk(this.cardCtrl.managerDesk)) this.DeactiveSkill();
 
-        if (this.targetChoosing) this.TargetChoosing();
+        if (this.targetChoosing) this.TargetChoosingProcessing();
         if (this.hasEnoughTarget) this.SkillActive();
     }
 
@@ -53,7 +54,7 @@ public abstract class CardSkill : SaiMonoBehaviour
         this.hasEnoughTarget = false;
     }
 
-    protected virtual void TargetChoosing()
+    protected virtual void TargetChoosingProcessing()
     {
         if (this.hasEnoughTarget) return;
 

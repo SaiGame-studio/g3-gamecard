@@ -71,10 +71,13 @@ public class MatchManager : SaiMonoBehaviour
     protected virtual void ShowCardAttackingMarker()
     {
         Vector3 pos = this.offCamPosition;
-        if (this.cardAttacking != null)
+
+        if (this.cardAttacking != null 
+            && this.cardAttacking.cardAction.cardSkill.TargetChoosing)
         {
             pos = this.cardAttacking.transform.position;
         }
+
         pos.y += 4;
         this.cardAttackingMarker.position = pos;
     }
