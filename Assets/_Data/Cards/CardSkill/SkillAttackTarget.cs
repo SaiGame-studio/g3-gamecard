@@ -15,6 +15,8 @@ public class SkillAttackTarget : CardSkill
         {
             this.AttackTarget(this.cardCtrl,target);
         }
+
+        this.ClearTargets();
     }
 
     protected virtual void AttackTarget(CardCtrl attacker, CardCtrl target)
