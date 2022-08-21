@@ -5,7 +5,7 @@ public abstract class ManagerDesk : SaiMonoBehaviour
 {
     [SerializeField] protected int cardPerLine = 5;
 
-    [SerializeField] protected CardPositions cardPositions;
+    public CardPositions cardPositions;
 
     [SerializeField] protected CardManager cardManager;
     [SerializeField] protected List<CardCtrl> mainDesk;

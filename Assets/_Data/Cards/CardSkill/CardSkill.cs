@@ -10,11 +10,19 @@ public abstract class CardSkill : SaiMonoBehaviour
     [SerializeField] protected int targetLimit = 1;
     [SerializeField] protected List<CardCtrl> targets;
 
+    public List<CardCtrl> Targets { get => targets;}
+
     public abstract void Active();
 
     protected virtual void SkillActive()
     {
         this.TargetsFaceUp();
+    }
+
+    protected virtual void ClearTargets()
+    {
+        this.targets.Clear();
+        this.hasEnoughTarget = false;
     }
 
     protected override void FixedUpdate()
